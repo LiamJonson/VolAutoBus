@@ -1,0 +1,79 @@
+<VolAutoBus>:
+    orientation: 'vertical'
+
+    MDToolbar:
+        title: 'VolAuto'
+        pos_hint: {'top':1}
+
+    ScreenManager:
+        id: kivy_screen_manager
+        StartScreen:
+            name:'first'
+        SecondScreen:
+            id: SecondScreen
+            name: 'SecondScreen'
+
+
+
+
+
+
+<StartScreen@Screen>:
+    BoxLayout:
+        orientation:'vertical'
+        Label:
+            text:'[b]yyyyyyyyyyyyy[/b]'
+
+        Button:
+            text:'first'
+        Button:
+            text:'second'
+            on_release:app.root.changeScreen(self.text)
+
+<SecondScreen@Screen>:
+    BoxLayout:
+        Label:
+            text: app.getText()
+            halign:'center'
+            markup: True
+            font_size: root.height /20
+            text_size:self.width, None
+            center_y: .5
+            on_ref_press:app.on_ref_press(*args)
+
+
+#screen_helper = ('''
+#
+#BoxLayout:
+#    orientation: 'vertical'
+#    MDToolbar:
+#        title: 'VolAuto'
+#        pos_hint: {'top':1}
+#    NavigationLayout:
+#        WindowManager:
+#            FirstWindow:
+#                BoxLayout:
+#                    orientation: 'vertical'
+#                    padding : [150]
+#                    Button:
+#                        text: 'tttttttt'
+#                        size_hint: None, None
+#                        size: 100, 50
+#                        pos_hint: {"center_y": .5, "center_x": .5}
+#                        on_release: app.root.current = 'second'
+#                    Button:
+#                        text: 'kkkk'
+#
+#                        size_hint: None, None
+#                        size: 100, 50
+#                        pos_hint: {"center_y": .5, "center_x": .5}
+#                        on_release: app.root.current = 'second'
+#            SecondWindow:
+#                BoxLayout:
+#                    orientation: 'vertical'
+#                    Button:
+#                        text: 'uuuuuu'
+#                        size_hint: None, None
+#                        size: 100, 50
+#                        on_release: app.root.current = 'first'
+#''')
